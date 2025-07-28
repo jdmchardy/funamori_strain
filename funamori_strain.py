@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import io
 
 st.set_page_config(layout="wide")
 st.title("Strain ε′₃₃ vs ψ — φ Sweep")
@@ -122,16 +124,34 @@ if st.button("Run Calculation"):
             psi_list.append(np.degrees(psi))
             strain_list.append(strain_prime_33)
 
+    # After strain_list and psi_list are populated
+    results_df = pd.DataFrame({
+    "phi (rad)": np.repeat(phi_values, psi_steps),
+    "psi (deg)": psi_list,
+    "strain_prime_33": strain_list
+    })
+
+    # Convert to CSV in memory
+    csv_buffer = io.StringIO()
+    results_df.to_csv(csv_buffer, index=False)
+    csv_data = csv_buffer.getvalue()
+
     st.success(f"Completed {phi_steps * psi_steps} evaluations.")
 
     # --- Plot result ---
     st.subheader("Scatter Plot: ε′₃₃ vs ψ")
     fig, ax = plt.subplots()
-    scatter = ax.scatter(psi_list, strain_list, c=strain_list, cmap="viridis", s=1)
+    scatter = ax.scatter(psi_list, strain_list, color="black", s=0.1, alpha=0.5)
     ax.set_xlabel("ψ (degrees)")
     ax.set_ylabel("ε′₃₃")
     ax.set_xlim(0,90)
     ax.set_title("Strain ε′₃₃ vs ψ")
-    ax.grid(True)
-    cbar = fig.colorbar(scatter, ax=ax, label="ε′₃₃")
     st.pyplot(fig)
+
+    # Add download button
+    st.download_button(
+        label="📄 Download Results as CSV",
+        data=csv_data,
+        file_name="strain_results.csv",
+        mime="text/csv"
+    )
