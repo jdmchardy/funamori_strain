@@ -5,7 +5,7 @@ import pandas as pd
 import io
 
 st.set_page_config(layout="wide")
-st.title("Strain ε′₃₃ vs ψ — φ Sweep")
+st.title("Funamori Strain (ε′₃₃ vs ψ & φ)")
 
 # --- Resolution control ---
 st.subheader("Computation Settings")
