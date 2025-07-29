@@ -111,8 +111,8 @@ if st.button("Run Calculation"):
             ε[1, 1] = elastic_compliance[1, 0] * sigma_double_prime[1, 1] + elastic_compliance[1, 1] * (sigma_double_prime[0, 0] + sigma_double_prime[2, 2])
             ε[2, 2] = elastic_compliance[2, 2] * sigma_double_prime[2, 2] + elastic_compliance[2, 0] * (sigma_double_prime[0, 0] + sigma_double_prime[1, 1])
             ε[0, 1] = ε[1, 0] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[0, 1]
-            ε[0, 2] = ε[2, 0] = 0.5 * elastic_compliance[4, 4] * sigma_double_prime[0, 2]
-            ε[1, 2] = ε[2, 1] = 0.5 * elastic_compliance[5, 5] * sigma_double_prime[1, 2]
+            ε[0, 2] = ε[2, 0] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[0, 2]
+            ε[1, 2] = ε[2, 1] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[1, 2]
 
             # ε'_33
             b13 = B[0, 2]
@@ -122,7 +122,7 @@ if st.button("Run Calculation"):
             strain_prime_33 = (
                 b13**2 * ε[0, 0] +
                 b23**2 * ε[1, 1] +
-                b33**2 * ε[2, 2] +
+                b33**2 * ε[2, 2] + 
                 2 * b13 * b23 * ε[0, 1] +
                 2 * b13 * b33 * ε[0, 2] +
                 2 * b23 * b33 * ε[1, 2]
