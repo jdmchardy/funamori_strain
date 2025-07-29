@@ -119,8 +119,8 @@ if st.button("Run Calculation"):
             # Strain tensor
             ε = np.zeros((3, 3))
             ε[0, 0] = elastic_compliance[0, 0] * sigma_double_prime[0, 0] + elastic_compliance[0, 1] * (sigma_double_prime[1, 1] + sigma_double_prime[2, 2])
-            ε[1, 1] = elastic_compliance[1, 0] * sigma_double_prime[1, 1] + elastic_compliance[1, 1] * (sigma_double_prime[0, 0] + sigma_double_prime[2, 2])
-            ε[2, 2] = elastic_compliance[2, 2] * sigma_double_prime[2, 2] + elastic_compliance[2, 0] * (sigma_double_prime[0, 0] + sigma_double_prime[1, 1])
+            ε[1, 1] = elastic_compliance[0, 0] * sigma_double_prime[1, 1] + elastic_compliance[0, 1] * (sigma_double_prime[0, 0] + sigma_double_prime[2, 2])
+            ε[2, 2] = elastic_compliance[0, 0] * sigma_double_prime[2, 2] + elastic_compliance[0, 1] * (sigma_double_prime[0, 0] + sigma_double_prime[1, 1])
             ε[0, 1] = ε[1, 0] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[0, 1]
             ε[0, 2] = ε[2, 0] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[0, 2]
             ε[1, 2] = ε[2, 1] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[1, 2]
