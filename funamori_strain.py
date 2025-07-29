@@ -34,9 +34,9 @@ with col2:
 
 with col3:
     st.subheader("Stress Components (σᵢᵢ)")
-    sigma_11 = st.number_input("σ₁₁", value=-0.3333, step=0.01)
-    sigma_22 = st.number_input("σ₂₂", value=-0.3333, step=0.01)
-    sigma_33 = st.number_input("σ₃₃", value=0.6666, step=0.01)
+    sigma_11 = st.number_input("σ₁₁", value=-0.3333, step=0.001)
+    sigma_22 = st.number_input("σ₂₂", value=-0.3333, step=0.001)
+    sigma_33 = st.number_input("σ₃₃", value=0.6666, step=0.001)
 
 # Compute square root to determine grid sizes
 psi_steps = int(np.sqrt(total_points))
