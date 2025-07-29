@@ -39,8 +39,8 @@ with col3:
     sigma_33 = st.number_input("σ₃₃", value=0.6666, step=0.01, format="%.3f")
 
 # Compute square root to determine grid sizes
-psi_steps = int(np.sqrt(total_points))
-phi_steps = int(np.sqrt(total_points))
+psi_steps = int(np.sqrt(total_points)/2)
+phi_steps = int(2*np.sqrt(total_points))
 
 if st.button("Run Calculation"):
     # Elastic constants matrix
@@ -75,8 +75,8 @@ if st.button("Run Calculation"):
     N = np.sqrt(K**2 + L**2)
     M = np.sqrt(H**2 + K**2 + L**2)
 
-    phi_values = np.linspace(0, 2 * np.pi, 2*phi_steps)
-    psi_values = np.linspace(0, np.pi / 2, psi_steps/2)
+    phi_values = np.linspace(0, 2 * np.pi, phi_steps)
+    psi_values = np.linspace(0, np.pi / 2, psi_steps)
 
     psi_list = []
     strain_list = []
