@@ -22,9 +22,9 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("Miller Indices / Lattice")
-    h = st.number_input("h", value=1.0)
-    k = st.number_input("k", value=1.0)
-    l = st.number_input("l", value=1.0)
+    h = int(st.number_input("h", value=1, step=1))
+    k = int(st.number_input("k", value=1, step=1))
+    l = int(st.number_input("l", value=1, step=1))
 
 with col2:
     st.subheader("Elastic Constants (GPa)")
@@ -61,6 +61,13 @@ if st.button("Run Calculation"):
     ])
 
     # Normalize direction
+    #Convert zero hkl values to eliminate division by zero
+    if h==0:
+        h=0.00000001
+    if k==0:
+        k=0.00000001
+    if l==0:
+        l=0.00000001
     H = h / a_val
     K = k / a_val
     L = l / a_val
