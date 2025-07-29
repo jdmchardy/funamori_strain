@@ -34,9 +34,9 @@ with col2:
 
 with col3:
     st.subheader("Stress Components (σᵢᵢ)")
-    sigma_11 = st.number_input("σ₁₁", value=-0.5, step=0.1)
-    sigma_22 = st.number_input("σ₂₂", value=-0.5, step=0.1)
-    sigma_33 = st.number_input("σ₃₃", value=1.0, step=0.1)
+    sigma_11 = st.number_input("σ₁₁", value=-0.3333, step=0.01)
+    sigma_22 = st.number_input("σ₂₂", value=-0.3333, step=0.01)
+    sigma_33 = st.number_input("σ₃₃", value=0.6666, step=0.01)
 
 # Compute square root to determine grid sizes
 psi_steps = int(np.sqrt(total_points))
@@ -143,7 +143,7 @@ if st.button("Run Calculation"):
                 2 * b23 * b33 * ε[1, 2]
             )
 
-            #st.write(strain_prime_33)
+            st.write(strain_prime_33)
 
             psi_list.append(np.degrees(psi))
             strain_list.append(strain_prime_33)
