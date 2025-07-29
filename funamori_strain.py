@@ -99,7 +99,7 @@ if st.button("Run Calculation"):
                 [-sin_psi, 0, cos_psi]
             ])
 
-            st.write(A)
+            #st.write(A)
 
             # B (crystal orientation)
             B = np.array([
@@ -108,10 +108,13 @@ if st.button("Run Calculation"):
                 [-H*L/(N*M), -K/N, L/M]
             ])
 
-            st.write(B)
+            #st.write(B)
 
             sigma_prime = A @ sigma @ A.T
             sigma_double_prime = B @ sigma_prime @ B.T
+
+            st.write(sigma_prime)
+            st.write(sigma_double_prime)
 
             # Strain tensor
             ε = np.zeros((3, 3))
