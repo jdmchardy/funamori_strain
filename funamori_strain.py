@@ -75,11 +75,8 @@ if st.button("Run Calculation"):
     N = np.sqrt(K**2 + L**2)
     M = np.sqrt(H**2 + K**2 + L**2)
 
-    #phi_values = np.linspace(0, 2 * np.pi, phi_steps)
-    #psi_values = np.linspace(0, np.pi / 2, psi_steps)
-
-    phi_values = [np.pi]
-    psi_values = [np.pi/4]
+    phi_values = np.linspace(0, 2 * np.pi, phi_steps)
+    psi_values = np.linspace(0, np.pi / 2, psi_steps)
 
     psi_list = []
     strain_list = []
@@ -99,8 +96,6 @@ if st.button("Run Calculation"):
                 [-sin_psi, 0, cos_psi]
             ])
 
-            #st.write(A)
-
             # B (crystal orientation)
             B = np.array([
                 [N/M, 0, H/M],
@@ -108,13 +103,8 @@ if st.button("Run Calculation"):
                 [-H*L/(N*M), -K/N, L/M]
             ])
 
-            #st.write(B)
-
             sigma_prime = A @ sigma @ A.T
             sigma_double_prime = B @ sigma_prime @ B.T
-
-            #st.write(sigma_prime)
-            #st.write(sigma_double_prime)
 
             # Strain tensor
             ε = np.zeros((3, 3))
@@ -125,14 +115,10 @@ if st.button("Run Calculation"):
             ε[0, 2] = ε[2, 0] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[0, 2]
             ε[1, 2] = ε[2, 1] = 0.5 * elastic_compliance[3, 3] * sigma_double_prime[1, 2]
 
-            st.write(ε[0, 0], ε[1, 1], ε[2, 2], ε[0, 1], ε[1, 0], ε[0, 2], ε[2, 0], ε[1, 2], ε[2, 1])
-            
             # ε'_33
             b13 = B[0, 2]
             b23 = B[1, 2]
             b33 = B[2, 2]
-
-            st.write(b13, b23, b33)
 
             strain_prime_33 = (
                 b13**2 * ε[0, 0] +
@@ -142,15 +128,6 @@ if st.button("Run Calculation"):
                 2 * b13 * b33 * ε[0, 2] +
                 2 * b23 * b33 * ε[1, 2]
             )
-
-            st.write(b13**2 * ε[0, 0])
-            st.write(b23**2 * ε[1, 1])
-            st.write(b33**2 * ε[2, 2])
-            st.write(2 * b13 * b23 * ε[0, 1])
-            st.write(2 * b13 * b33 * ε[0, 2])
-            st.write(2 * b23 * b33 * ε[1, 2])
-
-            st.write(strain_prime_33)
 
             psi_list.append(np.degrees(psi))
             strain_list.append(strain_prime_33)
