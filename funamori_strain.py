@@ -39,8 +39,8 @@ with col3:
     sigma_33 = st.number_input("σ₃₃", value=0.6666, step=0.01, format="%.3f")
 
 # Compute square root to determine grid sizes
-psi_steps = int(np.sqrt(total_points)/2)
-phi_steps = int(2*np.sqrt(total_points))
+psi_steps = int(2*np.sqrt(total_points))
+phi_steps = int(np.sqrt(total_points)/2)
 
 if st.button("Run Calculation"):
     # Elastic constants matrix
