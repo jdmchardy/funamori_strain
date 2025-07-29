@@ -78,13 +78,6 @@ if st.button("Run Calculation"):
     phi_values = np.linspace(0, 2 * np.pi, phi_steps)
     psi_values = np.linspace(0, np.pi / 2, psi_steps)
 
-    #Add noise to the sample points for smoother plotting
-    phi_noise = np.random.normal(0, 2*np.pi/1000, len(phi_values))
-    psi_noise = np.random.normal(0, np.pi / 2/1000, len(psi_values))
-
-    phi_values = phi_values + phi_noise
-    psi_values = psi_values + psi_noise
-
     psi_list = []
     strain_list = []
 
