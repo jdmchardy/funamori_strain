@@ -132,6 +132,8 @@ if st.button("Run Calculation"):
             b23 = B[1, 2]
             b33 = B[2, 2]
 
+            st.write(b13, b23, b33)
+
             strain_prime_33 = (
                 b13**2 * ε[0, 0] +
                 b23**2 * ε[1, 1] +
