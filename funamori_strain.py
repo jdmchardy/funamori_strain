@@ -28,9 +28,9 @@ with col1:
 
 with col2:
     st.subheader("Elastic Constants (GPa)")
-    c11 = st.number_input("C11", value=450.0, step=1)
-    c12 = st.number_input("C12", value=236.0, step=1)
-    c44 = st.number_input("C44", value=42.5, step=1)
+    c11 = st.number_input("C11", value=450.0, step=1.0)
+    c12 = st.number_input("C12", value=236.0, step=1.0)
+    c44 = st.number_input("C44", value=42.5, step=1.0)
 
 with col3:
     st.subheader("Stress Components (σᵢᵢ)")
