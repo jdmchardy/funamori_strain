@@ -11,9 +11,9 @@ st.title("Funamori Strain (ε′₃₃ vs ψ & φ)")
 st.subheader("Computation Settings")
 col1, col2 = st.columns(2)
 with col1:
-    total_points = st.number_input("Total number of points (φ × ψ)", value=5000, min_value=10, step=10)
+    total_points = st.number_input("Total number of points (φ × ψ)", value=10000, min_value=10, step=1000)
 with col2:
-    a_val = st.number_input("Lattice constant a (Å)", value=3.5)
+    a_val = st.number_input("Lattice constant a (Å)", value=3.5, step=0.1)
 
 # --- Inputs in compact layout ---
 st.header("Input Parameters")
@@ -28,15 +28,15 @@ with col1:
 
 with col2:
     st.subheader("Elastic Constants (GPa)")
-    c11 = st.number_input("C11", value=450.0)
-    c12 = st.number_input("C12", value=236.0)
-    c44 = st.number_input("C44", value=42.5)
+    c11 = st.number_input("C11", value=450.0, step=1)
+    c12 = st.number_input("C12", value=236.0, step=1)
+    c44 = st.number_input("C44", value=42.5, step=1)
 
 with col3:
     st.subheader("Stress Components (σᵢᵢ)")
-    sigma_11 = st.number_input("σ₁₁", value=-0.5)
-    sigma_22 = st.number_input("σ₂₂", value=-0.5)
-    sigma_33 = st.number_input("σ₃₃", value=1)
+    sigma_11 = st.number_input("σ₁₁", value=-0.5, step=0.1)
+    sigma_22 = st.number_input("σ₂₂", value=-0.5, step=0.1)
+    sigma_33 = st.number_input("σ₃₃", value=1, step=0.1)
 
 # Compute square root to determine grid sizes
 psi_steps = int(np.sqrt(total_points))
