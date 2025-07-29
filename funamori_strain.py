@@ -53,7 +53,7 @@ if st.button("Run Calculation"):
         [0, 0, 0, 0, 0, c44]
     ])
     elastic_compliance = np.linalg.inv(elastic)
-    st.write(elastic_compliance)
+    st.write("Elastic compliance matrix:", elastic_compliance)
 
     sigma = np.array([
         [sigma_11, 0, 0],
