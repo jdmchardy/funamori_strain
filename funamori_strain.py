@@ -143,6 +143,13 @@ if st.button("Run Calculation"):
                 2 * b23 * b33 * ε[1, 2]
             )
 
+            st.write(b13**2 * ε[0, 0])
+            st.write(b23**2 * ε[1, 1])
+            st.write(b33**2 * ε[2, 2])
+            st.write(2 * b13 * b23 * ε[0, 1])
+            st.write(2 * b13 * b33 * ε[0, 2])
+            st.write(2 * b23 * b33 * ε[1, 2])
+
             st.write(strain_prime_33)
 
             psi_list.append(np.degrees(psi))
