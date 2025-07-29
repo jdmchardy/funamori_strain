@@ -11,7 +11,7 @@ st.title("Funamori Strain (ε′₃₃ vs ψ & φ)")
 st.subheader("Computation Settings")
 col1, col2 = st.columns(2)
 with col1:
-    total_points = st.number_input("Total number of points (φ × ψ)", value=10000, min_value=10, step=1000)
+    total_points = st.number_input("Total number of points (φ × ψ)", value=20000, min_value=10, step=1000)
 with col2:
     a_val = st.number_input("Lattice constant a (Å)", value=3.5, step=0.1)
 
@@ -149,7 +149,7 @@ if st.button("Run Calculation"):
     # --- Plot result ---
     st.subheader("Scatter Plot: ε′₃₃ vs ψ")
     fig, ax = plt.subplots()
-    scatter = ax.scatter(psi_list, strain_list, color="black", s=0.2, alpha=0.3)
+    scatter = ax.scatter(psi_list, strain_list, color="black", s=0.2, alpha=0.1)
     ax.set_xlabel("ψ (degrees)")
     ax.set_ylabel("ε′₃₃")
     ax.set_xlim(0,90)
