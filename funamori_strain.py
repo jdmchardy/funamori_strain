@@ -75,8 +75,8 @@ if st.button("Run Calculation"):
     N = np.sqrt(K**2 + L**2)
     M = np.sqrt(H**2 + K**2 + L**2)
 
-    phi_values = np.linspace(0, 2 * np.pi, phi_steps)
-    psi_values = np.linspace(0, np.pi / 2, psi_steps)
+    phi_values = np.linspace(0, 2 * np.pi, 2*phi_steps)
+    psi_values = np.linspace(0, np.pi / 2, psi_steps/2)
 
     psi_list = []
     strain_list = []
