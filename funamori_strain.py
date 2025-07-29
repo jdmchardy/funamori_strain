@@ -59,8 +59,7 @@ if st.button("Run Calculation"):
         [0, sigma_22, 0],
         [0, 0, sigma_33]
     ])
-
-    # Normalize direction
+ 
     #Convert zero hkl values to eliminate division by zero
     if h==0:
         h=0.00000001
@@ -68,6 +67,7 @@ if st.button("Run Calculation"):
         k=0.00000001
     if l==0:
         l=0.00000001
+    # Normalize
     H = h / a_val
     K = k / a_val
     L = l / a_val
