@@ -149,7 +149,7 @@ if st.button("Run Calculation"):
     # --- Plot result ---
     st.subheader("Scatter Plot: ε′₃₃ vs ψ")
     fig, ax = plt.subplots()
-    scatter = ax.scatter(psi_list, strain_list, color="black", s=0.1, alpha=0.5)
+    scatter = ax.scatter(psi_list, strain_list, color="black", s=0.05, alpha=0.3)
     ax.set_xlabel("ψ (degrees)")
     ax.set_ylabel("ε′₃₃")
     ax.set_xlim(0,90)
